@@ -55,3 +55,6 @@ th { font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spa
 .tbd { color: var(--muted); font-style: italic; }
 .chartbox { margin-top: 12px; border: 1px dashed var(--line); border-radius: 8px; padding: 40px 16px; text-align: center; color: var(--muted); }
 footer { margin-top: 64px; color: var(--muted); font-size: 14px; }
+.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.grid3 img { display: block; background: #fff; border-radius: 6px; }
+@media (max-width: 640px) { .grid3 { grid-template-columns: 1fr; } }

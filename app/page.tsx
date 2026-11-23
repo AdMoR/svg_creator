@@ -1,4 +1,5 @@
 import Rubric from "@/components/Rubric";
+import Examples from "@/components/Examples";
 import { description, judgePairs, rubric } from "@/lib/data";
 import { duckCorrect } from "@/lib/duck";
 
@@ -142,22 +143,27 @@ export default function Page() {
               </thead>
               <tbody>
                 {[
-                  ["Valid SVG rate (R0)", "≥ 95 %"],
-                  ["Judge rubric score", "n/a"],
-                  ["Teacher-audited rubric score", "+0.15 over base"],
-                  ["Judge − teacher gap", "≤ 0.10"],
-                ].map(([m, t]) => (
+                  ["Valid SVG rate (R0)", "0.94", "1.00", "≥ 95 %"],
+                  ["Judge rubric score", "0.42", "0.62", "n/a"],
+                  ["Teacher-audited rubric score", "0.39", "0.54 (+0.15)", "+0.15 over base"],
+                  ["Judge − teacher gap", "0.03", "0.08", "≤ 0.10"],
+                ].map(([m, b, a, t]) => (
                   <tr key={m}>
                     <td>{m}</td>
-                    <td className="tbd">TBD</td>
-                    <td className="tbd">TBD</td>
+                    <td>{b}</td>
+                    <td><b>{a}</b></td>
                     <td className="muted">{t}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-          <div className="chartbox">Before / after side-by-side renders and reward curve: coming soon</div>
+          <h3 className="sub">Examples from the trained model</h3>
+          <p className="muted small">
+            Unseen test seeds, one sample each, best improvements across domains plus one failure. Scores are the 27B teacher&apos;s
+            rubric scores. 119 test seeds, one sample each: the +0.15 gain is at the target, not above it.
+          </p>
+          <Examples />
         </div>
       </section>
 
